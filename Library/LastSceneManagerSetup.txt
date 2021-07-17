@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/SelfModifyAsset/Scenes/MainMenu.unity
+- path: Assets/SelfModifyAsset/Scenes/Information.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

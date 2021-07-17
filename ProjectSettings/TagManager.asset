@@ -13,6 +13,7 @@ TagManager:
   - ThreshValueText
   - ThreshValueSlider
   - GameDefaultSetupManager
+  - MainMenuManager
   layers:
   - Default
   - TransparentFX
