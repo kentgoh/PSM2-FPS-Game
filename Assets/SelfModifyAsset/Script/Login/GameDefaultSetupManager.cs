@@ -10,14 +10,34 @@ public class GameDefaultSetupManager : MonoBehaviour
     public Slider threshSlider;
     public bool FPSGameMode = false;
 
+    private AudioSource BGM1;
+    private AudioSource BGM2;
+    private AudioSource MouseClick;
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        BGM1 = transform.Find("BGM1").GetComponent<AudioSource>();
+        BGM2 = transform.Find("BGM2").GetComponent<AudioSource>();
+        MouseClick = transform.Find("MouseClick").GetComponent<AudioSource>();
+
+        BGM1.Play();
     }
 
     void Update()
     {
         settingManager();
+
+        if (FPSGameMode && BGM1.isPlaying)
+        {
+            BGM1.Stop();
+            BGM2.Play();
+        }
+        else if(!FPSGameMode && BGM2.isPlaying)
+        {
+            BGM1.Play();
+            BGM2.Stop();
+        }
 
     }
 
@@ -49,5 +69,10 @@ public class GameDefaultSetupManager : MonoBehaviour
                     changeThreshValue();
             }
         }
+    }
+
+    public void playMouseClickSound()
+    {
+        MouseClick.Play();
     }
 }

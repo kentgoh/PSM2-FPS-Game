@@ -30,7 +30,7 @@ public class ImageDetection : MonoBehaviour
 
         //ROI (yStart,yEnd,xStart,xEnd) 
         Mat ROI = frame[frame.Height * 1 / 5, frame.Height * 4 / 5, frame.Width / 2, frame.Width];
-        detectHandGesture(ROI, 1);
+        detectHandGesture(ROI);
         setupDetectionArea(ROI);
 
         Texture newtexture = OpenCvSharp.Unity.MatToTexture(frame);
@@ -45,7 +45,7 @@ public class ImageDetection : MonoBehaviour
           
     }
 
-    void detectHandGesture(Mat ROI, int hand)
+    void detectHandGesture(Mat ROI)
     {
         int ROIarea = ROI.Width * ROI.Height;
 
@@ -76,11 +76,6 @@ public class ImageDetection : MonoBehaviour
         {
             if (Cv2.ContourArea(InputArray.Create(contours[i])) > (ROIarea / 10))
             {
-                //Find center
-                Moments m = Cv2.Moments(contours[i]);
-                int cx = (int)(m.M10 / m.M00);
-                int cy = (int)(m.M01 / m.M00);
-
                 //Find Convex Hull and All Convexity Defect
                 hull = Cv2.ConvexHull(contours[i], false);
                 Cv2.ConvexHull(InputArray.Create(contours[i]), hullMatrix, false, false);
@@ -109,7 +104,6 @@ public class ImageDetection : MonoBehaviour
                         {
                             Cv2.Circle(ROI, far, 10, new Scalar(0, 0, 255));
                             defectsCount++;
-
                         }
 
                     }

@@ -20,9 +20,13 @@ public class MainMenuManager : MonoBehaviour
     public int settingCount = 0;
     public bool settingMode = false;
 
+    private GameDefaultSetupManager gameDefaultSetupScript;
+    private PlayFabManager playFabScript;
+
     public void Start()
     {
-        PlayFabManager playFabScript = GameObject.FindGameObjectWithTag("PlayFabManager").GetComponent<PlayFabManager>();
+        playFabScript = GameObject.FindGameObjectWithTag("PlayFabManager").GetComponent<PlayFabManager>();
+        gameDefaultSetupScript = GameObject.FindGameObjectWithTag("GameDefaultSetupManager").GetComponent<GameDefaultSetupManager>();
         playerName.text = playFabScript.username;
     }
 
@@ -34,7 +38,6 @@ public class MainMenuManager : MonoBehaviour
     public void BackToLogin()
     {
         Destroy(GameObject.FindGameObjectWithTag("PlayFabManager"));
-        Destroy(GameObject.FindGameObjectWithTag("GameDefaultSetupManager"));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
@@ -119,5 +122,10 @@ public class MainMenuManager : MonoBehaviour
     public void StartHardStage()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+    }
+
+    public void PlayMouseClickSound()
+    {
+        gameDefaultSetupScript.playMouseClickSound();
     }
 }

@@ -40,7 +40,7 @@ public class FPSGameManager : MonoBehaviour
     public PlayFabManager playFabScript;
 
     //Game Default Setup Manager
-    public GameDefaultSetupManager gameDefaultSetupScript;
+    private GameDefaultSetupManager gameDefaultSetupScript;
 
     //image detection
     private GameObject cameraInput;
@@ -63,7 +63,6 @@ public class FPSGameManager : MonoBehaviour
 
         gameDefaultSetupScript = GameObject.FindGameObjectWithTag("GameDefaultSetupManager").GetComponent<GameDefaultSetupManager>();
         gameDefaultSetupScript.FPSGameMode = true;
-
 
     }
 
@@ -248,5 +247,10 @@ public class FPSGameManager : MonoBehaviour
     {
         gameDefaultSetupScript.FPSGameMode = false;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PlayMouseClickSound()
+    {
+        gameDefaultSetupScript.playMouseClickSound();
     }
 }

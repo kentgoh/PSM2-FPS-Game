@@ -279,12 +279,18 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 109
       Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9408}
     - Class: 114
       Script: {instanceID: 9696}
     - Class: 114
@@ -350,8 +356,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 9408}
     - Class: 114
       Script: {instanceID: 9696}
     - Class: 114
@@ -957,7 +961,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 3e80d2b3de25c639e24cca9b6f97995e
+      Hash: ef8a0e4982a7361ba3feb37b15725b5a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FPSGameManager
@@ -2217,5 +2221,5 @@ ScriptsOnlyBuild:
   - Assets/SelfModifyAsset/Scenes/EasyStage.unity
   - Assets/SelfModifyAsset/Scenes/NormalStage.unity
   - Assets/SelfModifyAsset/Scenes/HardStage.unity
-  playerPath: F:/Download/New Folder/HandGestureControlFPSGame/PSM2 Hand Gesture Control
-    FPS Game.exe
+  playerPath: F:/Download/New Folder/Hand Gesture Control FPS Game/PSM2 Hand Gesture
+    Control FPS Game.exe

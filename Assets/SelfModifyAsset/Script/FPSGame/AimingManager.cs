@@ -51,7 +51,7 @@ public class AimingManager : MonoBehaviour
         //Target destroyed, move to the closest enemy
         else
         {
-            targetPos = FindClosestEnemy(scope.transform.position, 3);
+            targetPos = FindClosestEnemy(scope.transform.position, 2);
             if (targetPos != new Vector3(0, 0, 0))
             {
                 scope.transform.position = targetPos;
@@ -89,10 +89,10 @@ public class AimingManager : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && imageDetectionScript.fingerCount == 3)
             {
-                targetPos = FindClosestEnemy(scope.transform.position, 2);
+                targetPos = FindClosestEnemy(scope.transform.position, 1);
                 scope.transform.position = targetPos;
             }
-                //Fire Activation
+            //Fire Activation
             else if(Input.GetMouseButtonDown(0) && imageDetectionScript.fingerCount == 2)
             {
                 if (aoeStrike)
@@ -120,11 +120,7 @@ public class AimingManager : MonoBehaviour
                     if (droneScript.DroneHealth == 0)
                         Destroy(aimingTarget, 0.8f);
                 }
-
             }
-
-            
-
         }
 
     }
@@ -160,28 +156,7 @@ public class AimingManager : MonoBehaviour
                 //Find differences between current aiming position and the target
                 float Xdiff = Mathf.Abs(currentAimingPosition.x - targetPos.x);
 
-
-                //Left Arrow clicked
                 if (command == 1)
-                {
-                    //Target is the closest and on the left of current aiming position
-                    if ((targetPos.x < currentAimingPosition.x) && (Xdiff < distance) && (distance != 0))
-                    {
-                        closestPos = targetPos;
-                        aimingTarget = target;
-                        distance = Xdiff;
-                    }
-                    else if (targetPos.x > currentAimingPosition.x)
-                    {
-                        if (Xdiff > furthestDistance)
-                        {
-                            furthestDistance = Xdiff;
-                            furthestPos = targetPos;
-                        }
-                    }
-                }
-                //Right Arrow clicked
-                if (command == 2)
                 {
                     //Target is the closest and on the right of current aiming position
                     if ((targetPos.x > currentAimingPosition.x) && (Xdiff < distance) && (distance != 0))
@@ -200,7 +175,7 @@ public class AimingManager : MonoBehaviour
                     }
                 }
                 //Previous target destroyed, auto find new one
-                else if (command == 3)
+                else if (command == 2)
                 {
                     if (Xdiff < distance)
                     {
@@ -215,7 +190,6 @@ public class AimingManager : MonoBehaviour
 
         if (float.IsInfinity(distance))
             closestPos = furthestPos;
-
 
         return closestPos;
 
@@ -246,7 +220,6 @@ public class AimingManager : MonoBehaviour
     public IEnumerator CameraShake(float duration, float magnitude)
     {
         Vector3 originalPos = transform.localPosition;
-
         float elapsed = 0.0f;
 
         while(elapsed < duration)
@@ -255,7 +228,6 @@ public class AimingManager : MonoBehaviour
             float y = Random.Range(-1f, 1f) * magnitude;
 
             transform.localPosition = new Vector3(x,y,originalPos.z);
-
             elapsed += Time.deltaTime;
 
             yield return null;
